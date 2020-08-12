@@ -23,7 +23,6 @@ exports.getTodos = async (req, res, next) => {
     res
       .status(500)
       .json({ success: false, message: "할일목록 전부 가져오는데 에러 발생" });
-    return;
   }
 };
 
@@ -47,6 +46,5 @@ exports.completed = async (req, res, next) => {
     res.status(200).json({ success: true, result: result });
   } catch (e) {
     res.status(500).json({ success: false, message: "서버에러" });
-    return;
   }
 };
