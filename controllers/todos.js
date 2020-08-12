@@ -1,7 +1,7 @@
 const connection = require("../db/mysql-connection");
 
 // @desc        모든 할일 목록 가져오기
-// @route       GET /api/v1/todos
+// @route       GET /api/v1/todos?offset=0&limit25
 // @request     *
 // @response    {success:true, rows:rows, count:count}
 exports.getTodos = async (req, res, next) => {
@@ -27,8 +27,8 @@ exports.getTodos = async (req, res, next) => {
 };
 
 // @desc        완료여부 체크 및 해제
-// @route       POST /api/v1/todos/:id
-// @request     completed
+// @route       POST /api/v1/todos
+// @request     completed, id
 // @response    {success:true, result:result}
 exports.completed = async (req, res, next) => {
   let id = req.body.id;
