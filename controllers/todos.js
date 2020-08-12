@@ -7,7 +7,6 @@ const connection = require("../db/mysql-connection");
 exports.getTodos = async (req, res, next) => {
   let offset = req.query.offset;
   let limit = req.query.limit;
-  console.log("개샹시이발");
 
   if (!offset || !limit) {
     res.status(400).json({ message: "parameters setting error" });
@@ -20,16 +19,12 @@ exports.getTodos = async (req, res, next) => {
     [rows] = await connection.query(query);
     let count = rows.length;
     res.status(200).json({ success: true, rows: rows, count: count });
-    console.log("시이발");
   } catch (e) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "할일목록 전부 가져오는데 에러 발생",
-        error: e,
-      });
-    console.log("개시이발");
+    res.status(500).json({
+      success: false,
+      message: "할일목록 전부 가져오는데 에러 발생",
+      error: e,
+    });
   }
 };
 
